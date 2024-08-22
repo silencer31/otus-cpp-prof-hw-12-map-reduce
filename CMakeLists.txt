@@ -1,18 +1,34 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.5)
 
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
 project(map_reduce VERSION ${PROJECT_VERSION})
 
+find_package(Boost COMPONENTS program_options system filesystem REQUIRED)
+find_package(Threads REQUIRED)
+
+if(NOT Boost_FOUND)
+    message(FATAL_ERROR "Boost Not found")
+endif()
+
+include_directories(${Boost_INCLUDE_DIR})
+
 configure_file(version.h.in version.h)
 
 #Main target 
-add_executable(map_reduce main.cpp)
+add_executable(map_reduce
+	main.cpp
+	options_reader.cpp
+)
+
 add_library(lib_map_reduce lib.cpp)
 
-set_target_properties(map_reduce lib_map_reduce PROPERTIES
-    CXX_STANDARD 17
+set_target_properties(
+	map_reduce
+	lib_map_reduce
+	PROPERTIES
+    CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
 )
 
@@ -21,6 +37,7 @@ target_include_directories(lib_map_reduce
 )
 
 target_link_libraries(map_reduce PRIVATE
+	${Boost_LIBRARIES}
     lib_map_reduce
 )
 
