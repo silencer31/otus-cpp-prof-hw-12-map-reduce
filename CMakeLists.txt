@@ -24,9 +24,12 @@ add_executable(map_reduce
 	main.cpp
 	external_functions.cpp
 	options_reader/options_reader.cpp
+	yamr/containers/containers.cpp
+	yamr/functors/functors.cpp
 	yamr/map_reduce/map_reduce.cpp
 	yamr/map_reduce/map.cpp
 	yamr/map_reduce/reduce.cpp
+	yamr/shuffle/shuffle.cpp
 )
 
 add_library(lib_map_reduce lib.cpp)

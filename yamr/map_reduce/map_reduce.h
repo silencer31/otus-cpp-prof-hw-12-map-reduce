@@ -1,8 +1,10 @@
 #pragma once
 
+#include "map.h"
+#include "reduce.h"
+#include "../shuffle/shuffle.h"
+
 #include <stdint.h>
-#include <set>
-#include <string>
 
 class MapReduce
 {
@@ -18,11 +20,11 @@ private:
     const int map_threads_number;
     const int reduce_threads_number;
     const std::set<uint64_t> block_points;
-    /*
-    std::vector<MapContainer> mMapContainers;
-    std::vector<ShuffleContainer> mShuffleContainers;
+    
+    std::vector<MapContainer> map_containers;
+    std::vector<ShuffleContainer> shuffle_containers;
 
-    Map mMap;
-    Shuffle mShuffle;
-    Reduce mReduce;*/
+    Map map_obj;
+    Shuffle shuffle_obj;
+    Reduce reduce_obj;
 };

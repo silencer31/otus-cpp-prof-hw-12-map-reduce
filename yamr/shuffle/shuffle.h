@@ -1,10 +1,11 @@
 #pragma once
 
+#include "../containers/containers.h"
+
 #include <vector>
 #include <thread>
 
-#include "defines.h"
-#include "containers.h"
+
 
 class Shuffle
 {

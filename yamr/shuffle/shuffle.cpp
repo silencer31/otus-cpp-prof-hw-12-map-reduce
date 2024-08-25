@@ -1,8 +1,7 @@
+#include "shuffle.h"
+
 #include <iostream>
 #include <functional>
-
-#include "shuffle.h"
-#include "utils.h"
 
 Shuffle::Shuffle(int aMapThreadsCount,
     int aReduceThreadsCount,
