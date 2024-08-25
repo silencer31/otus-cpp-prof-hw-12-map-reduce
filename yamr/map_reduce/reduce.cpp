@@ -6,7 +6,7 @@
 
 void Reduce::run_threads()
 {
-    for (std::size_t index = 0; index < reduce_threads_number; ++index)
+    for (std::size_t index = 0; index < static_cast<std::size_t>(reduce_threads_number); ++index)
     {
         reduce_threads.emplace_back(std::thread(&Reduce::thread_proc, this, index));
     }

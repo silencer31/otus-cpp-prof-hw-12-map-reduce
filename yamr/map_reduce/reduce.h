@@ -8,7 +8,7 @@
 class Reduce
 {
 public:
-    Reduce(int threads_number, std::vector<ShuffleContainer>& containers)
+    Reduce(unsigned int threads_number, std::vector<ShuffleContainer>& containers)
         : reduce_threads_number(threads_number)
         , shuffle_containers(containers)
     {}
@@ -22,7 +22,7 @@ private:
 
     void reduce_worker(std::size_t cont_index);
 
-    const int reduce_threads_number;
+    const unsigned int reduce_threads_number;
 
     std::vector<ShuffleContainer>& shuffle_containers;
     std::vector<std::thread> reduce_threads;

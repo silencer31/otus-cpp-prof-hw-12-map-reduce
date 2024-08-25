@@ -1,7 +1,7 @@
 #include "map_reduce.h"
 
 MapReduce::MapReduce(const std::string& src_file_path,
-    int map_threads_number, int reduce_threads_number,
+    unsigned int map_threads_number, unsigned int reduce_threads_number,
     std::set<uint64_t>&& bp) 
     : block_points(bp)
     , map_obj(src_file_path, map_containers)

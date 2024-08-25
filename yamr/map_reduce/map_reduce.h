@@ -10,7 +10,7 @@ class MapReduce
 {
 public:
     MapReduce(const std::string& src_file_path,
-        int map_threads_number, int reduce_threads_number,
+        unsigned int map_threads_number, unsigned int reduce_threads_number,
         std::set<uint64_t>&& bp);
 
     void start();

@@ -29,8 +29,8 @@ private:
     
     void shuffle_worker(std::size_t cont_index);
 
-    const int map_threads_number;
-    const int reduce_threads_number;
+    const unsigned int map_threads_number;
+    const unsigned int reduce_threads_number;
 
     std::vector<MapContainer>& map_containers;
     std::vector<ShuffleContainer>& shuffle_containers;
