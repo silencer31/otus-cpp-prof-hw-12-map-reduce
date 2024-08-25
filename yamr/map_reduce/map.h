@@ -8,18 +8,23 @@
 class Map
 {
 public:
-    Map(const std::string& aSrcFileName, int aThreadsCount, std::vector<MapContainer>& aMapContainers);
+    Map(const std::string& file_path, std::vector<MapContainer>& containers)
+        : src_file_path(file_path)
+        , map_containers(containers)
+    {}
 
-    void Run(const std::set<uint64_t>& aOffsets);
+
+    void run_threads(const std::set<uint64_t>& block_points);
 
 private:
-    void WaitThreads();
-    void ThreadProc(uint64_t aMinOffset, uint64_t aMaxOffset, std::size_t aIndex);
-    void Worker(uint64_t aMinOffset, uint64_t aMaxOffset, std::size_t aIndex);
+    void wait_for_finished();
 
-    std::string mSrcFileName;
-    int mThreadsCount;
+    void thread_proc(uint64_t min_offset, uint64_t max_offset, std::size_t cont_index);
 
-    std::vector<std::thread> mThreads;
-    std::vector<MapContainer>& mMapContainers;
+    void handle_file_block(uint64_t min_offset, uint64_t max_offset, std::size_t cont_index);
+
+    const std::string src_file_path;
+
+    std::vector<std::thread> map_threads;
+    std::vector<MapContainer>& map_containers;
 };

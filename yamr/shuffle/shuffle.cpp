@@ -3,37 +3,29 @@
 #include <iostream>
 #include <functional>
 
-Shuffle::Shuffle(int aMapThreadsCount,
-    int aReduceThreadsCount,
-    std::vector<MapContainer>& aMapContainers,
-    std::vector<ShuffleContainer>& aShuffleContainers)
-    : mMapThreadsCount(aMapThreadsCount)
-    , mReduceThreadsCount(aReduceThreadsCount)
-    , mMapContainers(aMapContainers)
-    , mShuffleContainers(aShuffleContainers)
+
+void Shuffle::run_threads()
 {
+    for (std::size_t index = 0; index < map_threads_number; ++index)
+        shuffle_threads.emplace_back(std::thread(&Shuffle::thread_proc, this, index));
+
+    wait_for_finished();
 }
 
-void Shuffle::Run()
+void Shuffle::wait_for_finished()
 {
-    for (std::size_t index = 0; index < mMapThreadsCount; ++index)
-        mThreads.emplace_back(std::thread(&Shuffle::ThreadProc, this, index));
-
-    WaitThreads();
-}
-
-void Shuffle::WaitThreads()
-{
-    for (auto& thread : mThreads)
-        if (thread.joinable())
+    for (auto& thread : shuffle_threads) {
+        if (thread.joinable()) {
             thread.join();
+        }
+    }
 }
 
-void Shuffle::ThreadProc(int aIndex)
+void Shuffle::thread_proc(std::size_t cont_index)
 {
     try
     {
-        Worker(aIndex);
+        shuffle_worker(cont_index);
     }
     catch (const std::exception& e)
     {
@@ -42,24 +34,21 @@ void Shuffle::ThreadProc(int aIndex)
 }
 
 
-std::size_t Shuffle::ReduceIndex(const std::string& line)
+std::size_t Shuffle::reduce_index(const std::string& line) const
 {
     std::hash<std::string> hashFn;
 
-    return hashFn(line) % mReduceThreadsCount;
+    return hashFn(line) % reduce_threads_number;
 }
 
-void Shuffle::Worker(int aIndex)
+void Shuffle::shuffle_worker(std::size_t cont_index)
 {
-    MapContainer& mapContainer = mMapContainers[aIndex];
-    for (const auto& line : mapContainer.mStrings)
+    MapContainer& container = map_containers[cont_index];
+    
+    for (const auto& line : container.cont_strings)
     {
-        std::size_t index = ReduceIndex(line);
+        std::size_t index = reduce_index(line);
 
-#ifdef DEBUG_PRINT
-        std::hash<std::string> hashFn;
-        std::cout << "threads=" << mReduceThreadsCount << ", line=" << line << ", hash=" << hashFn(line) % mReduceThreadsCount << ", index=" << index << std::endl;
-#endif
-        mShuffleContainers[index].Insert(line);
+        shuffle_containers[index].insert_line(line);
     }
 }

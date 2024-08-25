@@ -5,29 +5,35 @@
 #include <vector>
 #include <thread>
 
-
-
 class Shuffle
 {
 public:
-    Shuffle(int aMapThreadsCount,
-        int aReduceThreadsCount,
-        std::vector<MapContainer>& aMapContainers,
-        std::vector<ShuffleContainer>& aShuffleContainers);
+    Shuffle(int map_tn, int reduce_tn,        
+        std::vector<MapContainer>& m_conts,
+        std::vector<ShuffleContainer>& s_conts)
+        : map_threads_number(map_tn)
+        , reduce_threads_number(reduce_tn)
+        , map_containers(m_conts)
+        , shuffle_containers(s_conts)
+    {}
 
-    void Run();
+    void run_threads();
 
 private:
-    void WaitThreads();
-    void ThreadProc(int aIndex);
-    std::size_t ReduceIndex(const std::string& line);
-    void Worker(int aIndex);
+    
+    void wait_for_finished();
+    
+    void thread_proc(std::size_t cont_index);
+    
+    std::size_t reduce_index(const std::string& line) const;
+    
+    void shuffle_worker(std::size_t cont_index);
 
-    int mMapThreadsCount;
-    int mReduceThreadsCount;
+    const int map_threads_number;
+    const int reduce_threads_number;
 
-    std::vector<MapContainer>& mMapContainers;
-    std::vector<ShuffleContainer>& mShuffleContainers;
+    std::vector<MapContainer>& map_containers;
+    std::vector<ShuffleContainer>& shuffle_containers;
 
-    std::vector<std::thread> mThreads;
+    std::vector<std::thread> shuffle_threads;
 };

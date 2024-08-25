@@ -6,18 +6,18 @@
 
 struct MapContainer
 {
-    void Insert(const std::string& str);
+    void insert_line(const std::string& str);
 
-    std::multiset<std::string> mStrings;
+    std::multiset<std::string> cont_strings;
 };
 
-extern std::mutex mMapMutex;
+extern std::mutex map_mutex;
 
 struct ShuffleContainer
 {
-    void Insert(const std::string& str);
+    void insert_line(const std::string& str);
 
-    std::multiset<std::string> mStrings;
+    std::multiset<std::string> cont_strings;
 };
 
-extern std::mutex mShuffleMutex;
+extern std::mutex shuffle_mutex;

@@ -4,33 +4,30 @@
 #include <fstream>
 #include <sstream>
 
-Reduce::Reduce(int aReduceThreadsCount, std::vector<ShuffleContainer>& aShuffleContainers)
-    : mThreadsCount(aReduceThreadsCount)
-    , mShuffleContainers(aShuffleContainers)
+void Reduce::run_threads()
 {
-}
-
-void Reduce::Run()
-{
-    for (std::size_t index = 0; index < mThreadsCount; ++index)
+    for (std::size_t index = 0; index < reduce_threads_number; ++index)
     {
-        mThreads.emplace_back(std::thread(&Reduce::ThreadProc, this, index));
+        reduce_threads.emplace_back(std::thread(&Reduce::thread_proc, this, index));
     }
-    WaitThreads();
+
+    wait_for_finished();
 }
 
-void Reduce::WaitThreads()
+void Reduce::wait_for_finished()
 {
-    for (auto& thread : mThreads)
-        if (thread.joinable())
+    for (auto& thread : reduce_threads) {
+        if (thread.joinable()) {
             thread.join();
+        }
+    }
 }
 
-void Reduce::ThreadProc(int aIndex)
+void Reduce::thread_proc(std::size_t cont_index)
 {
     try
     {
-        Worker(aIndex);
+        reduce_worker(cont_index);
     }
     catch (const std::exception& e)
     {
@@ -38,16 +35,15 @@ void Reduce::ThreadProc(int aIndex)
     }
 }
 
-void Reduce::Worker(int aIndex)
+void Reduce::reduce_worker(std::size_t cont_ndex)
 {
-    ShuffleContainer& container = mShuffleContainers[aIndex];
-#ifdef DEBUG_PRINT
-    std::cout << "Reduce" << aIndex << std::endl;
-#endif
-    std::stringstream fileName;
-    fileName << "reduceresult" << aIndex;
-    std::ofstream f(fileName.str());
+    ShuffleContainer& container = shuffle_containers[cont_ndex];
+
+    std::stringstream file_name;
+    file_name << "reduced_" << cont_ndex;
+    std::ofstream file_stream(file_name.str());
+    
     ReduceFunctor functor;
-    f << functor(container.mStrings);
+    file_stream << functor(container.cont_strings);
 }
 

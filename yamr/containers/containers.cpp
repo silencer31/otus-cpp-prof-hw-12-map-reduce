@@ -1,17 +1,17 @@
 #include "containers.h"
 
-void MapContainer::Insert(const std::string& str)
+void MapContainer::insert_line(const std::string& str)
 {
-    std::lock_guard<std::mutex> lock(mMapMutex);
-    mStrings.insert(str);
+    std::lock_guard<std::mutex> lock(map_mutex);
+    cont_strings.insert(str);
 }
 
-std::mutex mMapMutex;
+std::mutex map_mutex;
 
-void ShuffleContainer::Insert(const std::string& str)
+void ShuffleContainer::insert_line(const std::string& str)
 {
-    std::lock_guard<std::mutex> lock(mShuffleMutex);
-    mStrings.insert(str);
+    std::lock_guard<std::mutex> lock(shuffle_mutex);
+    cont_strings.insert(str);
 }
 
-std::mutex mShuffleMutex;
+std::mutex shuffle_mutex;

@@ -8,17 +8,22 @@
 class Reduce
 {
 public:
-    Reduce(int aReduceThreadsCount, std::vector<ShuffleContainer>& aShuffleContainers);
+    Reduce(int threads_number, std::vector<ShuffleContainer>& containers)
+        : reduce_threads_number(threads_number)
+        , shuffle_containers(containers)
+    {}
 
-    void Run();
+    void run_threads();
 
 private:
-    void WaitThreads();
-    void ThreadProc(int aIndex);
-    void Worker(int aIndex);
+    void wait_for_finished();
 
-    int mThreadsCount;
+    void thread_proc(std::size_t cont_index);
 
-    std::vector<ShuffleContainer>& mShuffleContainers;
-    std::vector<std::thread> mThreads;
+    void reduce_worker(std::size_t cont_index);
+
+    const int reduce_threads_number;
+
+    std::vector<ShuffleContainer>& shuffle_containers;
+    std::vector<std::thread> reduce_threads;
 };
