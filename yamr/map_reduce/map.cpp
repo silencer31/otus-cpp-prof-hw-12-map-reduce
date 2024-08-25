@@ -12,8 +12,9 @@ void Map::run_threads(const std::set<uint64_t>& block_points)
     for (std::size_t index = 0; index < offsets.size(); ++index)
     {
         uint64_t min_offset = offsets[index];
-        uint64_t max_offset = index + 1 < offsets.size() ? offsets[index + 1] : -1;
-        
+        //uint64_t max_offset = index + 1 < offsets.size() ? offsets[index + 1] : -1;
+        uint64_t max_offset = index + 1 < offsets.size() ? offsets[index + 1] : 0;
+
         map_threads.emplace_back(std::thread(&Map::thread_proc, this, min_offset, max_offset, index));
     }
     
@@ -45,14 +46,16 @@ void Map::handle_file_block(uint64_t min_offset, uint64_t max_offset, std::size_
 {
     MapFunctor functor;
 
-    //assert(aMaxOffset == 1 || max_offset >= min_offset);
+    assert(max_offset == 1 || max_offset >= min_offset);
+    
     std::ifstream src_stream(src_file_path);
     src_stream.seekg(min_offset);
     std::string file_line;
     
     MapContainer& container = map_containers[cont_index];
 
-    while (std::getline(src_stream, file_line) && (max_offset == -1 || static_cast<uint64_t>(src_stream.tellg()) <= max_offset))
+    //while (std::getline(src_stream, file_line) && (max_offset == -1 || static_cast<uint64_t>(src_stream.tellg()) <= max_offset))
+    while (std::getline(src_stream, file_line) && (max_offset == 0 || static_cast<uint64_t>(src_stream.tellg()) <= max_offset))
     {
         if (file_line.length() > 0 && file_line[file_line.length() - 1] == '\r') {
             file_line = file_line.substr(0, file_line.length() - 1);
