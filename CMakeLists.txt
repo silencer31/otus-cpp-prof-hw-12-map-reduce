@@ -5,7 +5,8 @@ set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
 project(map_reduce VERSION ${PROJECT_VERSION})
 
-find_package(Boost COMPONENTS program_options system filesystem REQUIRED)
+find_package(Boost COMPONENTS program_options filesystem system REQUIRED)
+#find_package(Boost REQUIRED)
 find_package(Threads REQUIRED)
 
 if(NOT Boost_FOUND)
@@ -14,12 +15,18 @@ endif()
 
 include_directories(${Boost_INCLUDE_DIR})
 
+#add_definitions(-DBOOST_ALL_NO_LIB) # Without this string boost filesystem will not compile.
+
 configure_file(version.h.in version.h)
 
 #Main target 
 add_executable(map_reduce
 	main.cpp
-	options_reader.cpp
+	external_functions.cpp
+	options_reader/options_reader.cpp
+	yamr/map_reduce/map_reduce.cpp
+	yamr/map_reduce/map.cpp
+	yamr/map_reduce/reduce.cpp
 )
 
 add_library(lib_map_reduce lib.cpp)
