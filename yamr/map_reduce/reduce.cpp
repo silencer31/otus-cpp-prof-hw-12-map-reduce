@@ -6,6 +6,8 @@
 
 void Reduce::run_threads()
 {
+    std::cout << "Reduce stage started" << std::endl;
+
     for (std::size_t index = 0; index < static_cast<std::size_t>(reduce_threads_number); ++index)
     {
         reduce_threads.emplace_back(std::thread(&Reduce::thread_proc, this, index));

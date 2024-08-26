@@ -6,6 +6,8 @@
 using namespace std;
 namespace po = boost::program_options;
 
+#include <iostream>
+
 Parameters OptionsReader::read_arguments(int argc, const char* argv[])
 {
     po::options_description desc("MapReduce app. Parameters");
@@ -30,8 +32,16 @@ Parameters OptionsReader::read_arguments(int argc, const char* argv[])
         ;
     
     po::variables_map vm;
-    po::store(po::parse_command_line(argc, argv, desc), vm);
+    
+    try {
+        po::store(po::parse_command_line(argc, argv, desc), vm);
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Unable to parse parameters: " << e.what() << std::endl;
+    }
+
     notify(vm);
+    
 
     stringstream help;
     help << desc << endl;

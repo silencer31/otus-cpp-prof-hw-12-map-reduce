@@ -19,4 +19,6 @@ void MapReduce::start()
     map_obj.run_threads(block_points);
     shuffle_obj.run_threads();
     reduce_obj.run_threads();
+
+    std::cout << "\nMapReduce completed" << std::endl;
 }

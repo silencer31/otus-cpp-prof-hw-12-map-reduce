@@ -6,6 +6,8 @@
 
 void Map::run_threads(const std::set<uint64_t>& block_points)
 {
+    std::cout << "\nMap stage started" << std::endl;
+
     std::vector<uint64_t> offsets(block_points.begin(), block_points.end());
     
     // Цикл по позициям в файле
@@ -53,6 +55,7 @@ void Map::handle_file_block(uint64_t min_offset, uint64_t max_offset, bool last_
 
     MapFunctor functor;
 
+    // В цикле читаем блок файла построчно.
     while (std::getline(src_stream, file_line) && (last_block || static_cast<uint64_t>(src_stream.tellg()) <= max_offset))
     {
         if (file_line.length() > 0 && file_line[file_line.length() - 1] == '\r') {

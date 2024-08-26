@@ -43,6 +43,11 @@ int main(int args_number, char const** args)
         return -1;
     }
 
+    std::cout << "MapReduce parameters:" << std::endl;
+    std::cout << "  File path: " << parameters.src << std::endl;
+    std::cout << "  Map threads number:" << parameters.mnum << std::endl;
+    std::cout << "  Reduce Map threads number:" << parameters.rnum << std::endl;
+
     MapReduce map_reduce(parameters.src, parameters.mnum, parameters.rnum, std::move(block_points));
     map_reduce.start();
 
