@@ -4,6 +4,9 @@
 #include <set>
 #include <mutex>
 
+/**
+* @brief Контейнер для этапа отображения.
+*/
 struct MapContainer
 {
     void insert_line(const std::string& str);
@@ -13,6 +16,9 @@ struct MapContainer
 
 extern std::mutex map_mutex;
 
+/**
+* @brief Контейнер для этапа свёртки.
+*/
 struct ShuffleContainer
 {
     void insert_line(const std::string& str);

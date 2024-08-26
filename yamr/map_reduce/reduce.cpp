@@ -11,6 +11,7 @@ void Reduce::run_threads()
         reduce_threads.emplace_back(std::thread(&Reduce::thread_proc, this, index));
     }
 
+    // Ожидаем завершения потоков.
     wait_for_finished();
 }
 

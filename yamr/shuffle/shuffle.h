@@ -5,6 +5,9 @@
 #include <vector>
 #include <thread>
 
+/**
+* @brief Класс реализует этап Shuffle
+*/
 class Shuffle
 {
 public:
@@ -17,10 +20,15 @@ public:
         , shuffle_containers(s_conts)
     {}
 
+    /**
+    * Запуск потоков.
+    */
     void run_threads();
 
 private:
-    
+    /**
+    * Ожидание завершения всех потоков.
+    */
     void wait_for_finished();
     
     void thread_proc(std::size_t cont_index);

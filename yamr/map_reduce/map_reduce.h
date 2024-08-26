@@ -6,6 +6,9 @@
 
 #include <stdint.h>
 
+/**
+* @brief Класс реализует систему запуска задач MapReduce
+*/
 class MapReduce
 {
 public:
@@ -13,9 +16,13 @@ public:
         unsigned int map_threads_number, unsigned int reduce_threads_number,
         std::set<uint64_t>&& bp);
 
+    /**
+    * Запуск работы системы задач MapReduce.
+    */
     void start();
 
 private:
+    // Коллекция позиций в файле для начала работы каждого потока Map.
     const std::set<uint64_t> block_points;
     
     std::vector<MapContainer> map_containers;

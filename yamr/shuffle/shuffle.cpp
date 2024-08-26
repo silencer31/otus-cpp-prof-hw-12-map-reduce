@@ -6,9 +6,11 @@
 
 void Shuffle::run_threads()
 {
-    for (std::size_t index = 0; index < static_cast<std::size_t>(map_threads_number); ++index)
+    for (std::size_t index = 0; index < static_cast<std::size_t>(map_threads_number); ++index) {
         shuffle_threads.emplace_back(std::thread(&Shuffle::thread_proc, this, index));
+    }
 
+    // Ожидаем завершения потоков перед началом следующего этапа.
     wait_for_finished();
 }
 

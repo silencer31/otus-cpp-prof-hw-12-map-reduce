@@ -5,6 +5,9 @@
 #include <unordered_map>
 #include <set>
 
+/**
+* @brief Класс функтор для реализации этапа отображения - Map.
+*/
 class MapFunctor
 {
 public:
@@ -16,6 +19,9 @@ private:
     std::vector<std::string> map_lines;
 };
 
+/**
+* @brief Класс функтор для реализации этапа свёртки - Reduce.
+*/
 class ReduceFunctor
 {
 public:
