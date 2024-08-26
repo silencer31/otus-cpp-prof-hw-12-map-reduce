@@ -31,10 +31,18 @@ private:
     */
     void wait_for_finished();
     
+    /**
+    * ћетод, выполн€ющий свЄртку.
+    * @param cont_index »ндекс дл€ контейнеров Shuffle
+    */
     void thread_proc(std::size_t cont_index);
     
     std::size_t reduce_index(const std::string& line) const;
     
+    /**
+    * ћетод, выполн€ющий смешивание.
+    * @param cont_index »ндекс дл€ контейнеров Map
+    */
     void shuffle_worker(std::size_t cont_index);
 
     const unsigned int map_threads_number;
