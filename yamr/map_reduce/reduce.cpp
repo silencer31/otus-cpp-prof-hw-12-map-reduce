@@ -36,15 +36,18 @@ void Reduce::thread_proc(std::size_t cont_index)
     }
 }
 
+
 void Reduce::reduce_worker(std::size_t cont_ndex)
 {
     ShuffleContainer& container = shuffle_containers[cont_ndex];
 
     std::stringstream file_name;
-    file_name << "reduced_" << cont_ndex;
+    file_name << "reduced_" << cont_ndex << ".txt";
     std::ofstream file_stream(file_name.str());
     
     ReduceFunctor functor;
     file_stream << functor(container.cont_strings);
+
+    //std::cout << "File: " << file_name.str() << std::endl;
 }
 

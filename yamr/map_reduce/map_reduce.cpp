@@ -1,5 +1,7 @@
 #include "map_reduce.h"
 
+#include <iostream>
+
 MapReduce::MapReduce(const std::string& src_file_path,
     unsigned int map_threads_number, unsigned int reduce_threads_number,
     std::set<uint64_t>&& bp) 

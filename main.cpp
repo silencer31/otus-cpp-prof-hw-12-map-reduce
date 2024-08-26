@@ -9,18 +9,18 @@
 
 
 int main(int args_number, char const** args)
-{
+{   
     // Объект для чтения параметров - аргументов программы.
     const std::unique_ptr<OptionsReader> opt_reader_ptr = std::make_unique<OptionsReader>();
-
+    
     // Набор аргументов - параметров программы.
     const Parameters parameters = opt_reader_ptr->read_arguments(args_number, args);
-
+    
     if (parameters.show_help) {
-        std::cout << parameters.help_text << std::endl;
+        std::cerr << parameters.help_text << std::endl;
         return 0;
     }
-    
+   
     // Проверяем, существует ли файл.
     if (!boost::filesystem::exists(parameters.src)) {
         std::cerr << "Provided file doesn't exist! " << parameters.src << std::endl;;
