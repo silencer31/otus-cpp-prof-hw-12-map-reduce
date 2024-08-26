@@ -1,0 +1,13 @@
+<map id="yamr/map_reduce" name="yamr/map_reduce">
+<area shape="rect" id="node1" href="dir_4a7e9e237a4c9972e4fd502274889ebd.html" title="functors" alt="" coords="27,126,96,152"/>
+<area shape="rect" id="node2" href="dir_8eeca6946e4bdad552f3ceba303e57db.html" title="containers" alt="" coords="119,126,201,152"/>
+<area shape="rect" id="node3" href="dir_9810dd01a3c52a73d7024ae6ad8276dc.html" title="shuffle" alt="" coords="224,126,282,152"/>
+<area shape="rect" id="node4" href="dir_7ce5e49163845c5e031c6176ed020142.html" title="map_reduce" alt="" coords="114,52,206,78"/>
+<area shape="poly" id="edge1" href="dir_000002_000001.html" alt="" coords="145,81,92,119,88,115,142,76"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000002_000001.html" title="2" alt="" coords="94,114,101,129"/>
+<area shape="poly" id="edge2" href="dir_000002_000000.html" alt="" coords="163,78,163,110,157,110,157,78"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000002_000000.html" title="2" alt="" coords="165,100,172,115"/>
+<area shape="poly" id="edge3" href="dir_000002_000004.html" alt="" coords="177,76,227,114,224,119,174,81"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000002_000004.html" title="1" alt="" coords="225,100,232,115"/>
+<area shape="rect" id="clust1" href="dir_90a02b45f78ffdc173380b1949c1bb59.html" title="yamr" alt="" coords="16,16,293,162"/>
+</map>

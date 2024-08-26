@@ -1,0 +1,20 @@
+<map id="yamr/functors/functors.h" name="yamr/functors/functors.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="206,5,367,31"/>
+<area shape="rect" id="Node000002" href="$functors_8cpp.html" title=" " alt="" coords="5,79,181,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,39,127,81,125,76,238,34"/>
+<area shape="rect" id="Node000003" href="$map_8h.html" title=" " alt="" coords="205,79,368,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="289,46,289,79,284,79,284,46"/>
+<area shape="rect" id="Node000008" href="$reduce_8h.html" title=" " alt="" coords="392,79,570,105"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="335,34,449,76,447,81,333,39"/>
+<area shape="rect" id="Node000004" href="$map_8cpp.html" title=" " alt="" coords="103,160,280,186"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="262,117,208,162,204,158,259,113"/>
+<area shape="rect" id="Node000005" href="$map__reduce_8h.html" title=" " alt="" coords="304,153,458,193"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="314,113,359,150,356,154,310,117"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html" title=" " alt="" coords="275,249,348,274"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="358,207,323,250,319,247,354,204"/>
+<area shape="rect" id="Node000007" href="$map__reduce_8cpp.html" title=" " alt="" coords="372,241,526,282"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="408,204,436,239,432,243,404,207"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="456,116,407,154,404,150,453,112"/>
+<area shape="rect" id="Node000009" href="$reduce_8cpp.html" title=" " alt="" coords="481,160,673,186"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="509,113,564,158,561,162,506,117"/>
+</map>

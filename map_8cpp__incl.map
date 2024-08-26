@@ -1,0 +1,29 @@
+<map id="yamr/map_reduce/map.cpp" name="yamr/map_reduce/map.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="90,5,267,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,77,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,34,79,74,77,69,154,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="100,79,166,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,33,151,67,146,64,169,30"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="190,79,258,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,30,210,64,206,67,184,33"/>
+<area shape="rect" id="Node000005" href="$map_8h.html" title=" " alt="" coords="282,79,338,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="202,29,276,69,274,74,199,34"/>
+<area shape="rect" id="Node000006" href="$containers_8h.html" title=" " alt="" coords="52,153,217,178"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="283,107,179,149,177,144,281,102"/>
+<area shape="rect" id="Node000010" href="$functors_8h.html" title=" " alt="" coords="241,153,380,178"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="313,105,313,137,308,137,308,105"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="404,153,462,178"/>
+<area shape="poly" id="edge14_Node000005_Node000013" title=" " alt="" coords="332,103,401,142,398,147,330,108"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="178,226,232,252"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="148,177,184,213,181,217,144,180"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="115,226,154,252"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="137,179,137,211,132,211,132,179"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="34,226,90,252"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="124,180,87,217,83,213,121,177"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="294,181,237,220,234,215,291,177"/>
+<area shape="poly" id="edge13_Node000010_Node000008" title=" " alt="" coords="281,181,170,226,168,222,279,176"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="390,226,447,252"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="330,177,389,215,386,220,327,181"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="255,226,366,252"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="313,179,313,211,308,211,308,179"/>
+</map>
